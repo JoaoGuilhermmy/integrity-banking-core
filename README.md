@@ -723,7 +723,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 **João Guilhermmy**
 
-- GitHub: [@seu-usuario](https://github.com/seu-usuario)
+- GitHub: https://github.com/JoaoGuilhermmy
 - LinkedIn: www.linkedin.com/in/joão-guilhermmy-93661b29b
 - Email: joaoguilhermmy2@gmail.com
 
