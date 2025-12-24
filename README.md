@@ -721,11 +721,11 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 👨‍💻 Autor
 
-**Seu Nome**
+**João Guilhermmy**
 
 - GitHub: [@seu-usuario](https://github.com/seu-usuario)
-- LinkedIn: [Seu Nome](https://linkedin.com/in/seu-perfil)
-- Email: seu.email@exemplo.com
+- LinkedIn: www.linkedin.com/in/joão-guilhermmy-93661b29b
+- Email: joaoguilhermmy2@gmail.com
 
 ---
 
