@@ -1,585 +1,746 @@
-import React, { useState } from 'react';
-import { Github, Star, GitFork, Download, Code, Users, Shield, TrendingUp, FileText, CheckCircle, AlertTriangle, BookOpen, Terminal, Zap, Lock, Database, Activity } from 'lucide-react';
+# 🏦 Sistema Bancário Java com JML Annotations
 
-const BancoReadme = () => {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [copiedCode, setCopiedCode] = useState('');
+<div align="center">
 
-  const copyToClipboard = (code, id) => {
-    navigator.clipboard.writeText(code);
-    setCopiedCode(id);
-    setTimeout(() => setCopiedCode(''), 2000);
-  };
+![Java](https://img.shields.io/badge/Java-11+-orange?style=for-the-badge&logo=java)
+![JML](https://img.shields.io/badge/JML-Annotations-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-  const tabs = [
-    { id: 'overview', label: 'Visão Geral', icon: BookOpen },
-    { id: 'features', label: 'Funcionalidades', icon: Zap },
-    { id: 'architecture', label: 'Arquitetura', icon: Database },
-    { id: 'installation', label: 'Instalação', icon: Download },
-    { id: 'usage', label: 'Como Usar', icon: Terminal },
-    { id: 'jml', label: 'JML & Qualidade', icon: Shield },
-  ];
+**Sistema bancário completo desenvolvido em Java com anotações JML para verificação formal de software**
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
-      {/* Header */}
-      <header className="border-b border-blue-800/30 bg-black/20 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/50">
-                <Database className="w-8 h-8" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                  Sistema Bancário Java
-                </h1>
-                <p className="text-gray-400 text-sm mt-1">Sistema completo com JML Annotations</p>
-              </div>
-            </div>
-            <div className="flex gap-3">
-              <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
-                <Star className="w-4 h-4" />
-                <span>Star</span>
-              </button>
-              <button className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors">
-                <GitFork className="w-4 h-4" />
-                <span>Fork</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+[📖 Documentação](#documentação) • [🚀 Instalação](#instalação) • [💡 Funcionalidades](#funcionalidades) • [🏗️ Arquitetura](#arquitetura)
 
-      {/* Navigation Tabs */}
-      <nav className="border-b border-blue-800/30 bg-black/10 backdrop-blur-sm sticky top-24 z-40">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex gap-1 overflow-x-auto">
-            {tabs.map((tab) => {
-              const Icon = tab.icon;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-5 py-3 border-b-2 transition-all whitespace-nowrap ${
-                    activeTab === tab.id
-                      ? 'border-blue-500 text-blue-400 bg-blue-500/10'
-                      : 'border-transparent text-gray-400 hover:text-gray-300 hover:bg-white/5'
-                  }`}
-                >
-                  <Icon className="w-4 h-4" />
-                  {tab.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </nav>
+</div>
 
-      {/* Content */}
-      <main className="max-w-7xl mx-auto px-6 py-12">
-        {/* Overview Tab */}
-        {activeTab === 'overview' && (
-          <div className="space-y-12 animate-fadeIn">
-            {/* Hero Section */}
-            <div className="text-center space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-sm">
-                <Activity className="w-4 h-4" />
-                Sistema em Desenvolvimento • JML Annotations
-              </div>
-              <h2 className="text-5xl font-bold">
-                Sistema Bancário Completo
-              </h2>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-                Aplicação robusta em Java com anotações JML para garantir confiabilidade e qualidade de código. 
-                Demonstrando práticas avançadas de programação orientada a objetos e design de software.
-              </p>
-            </div>
+---
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                { icon: Code, label: 'Linhas de Código', value: '2000+' },
-                { icon: FileText, label: 'Classes Java', value: '18' },
-                { icon: Shield, label: 'JML Specs', value: 'Em Progresso' },
-                { icon: CheckCircle, label: 'Cobertura', value: 'Alta' },
-              ].map((stat, i) => {
-                const Icon = stat.icon;
-                return (
-                  <div key={i} className="bg-gradient-to-br from-slate-800/50 to-blue-900/30 border border-blue-700/30 rounded-xl p-6 text-center">
-                    <Icon className="w-8 h-8 mx-auto mb-3 text-blue-400" />
-                    <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-                    <div className="text-sm text-gray-400">{stat.label}</div>
-                  </div>
-                );
-              })}
-            </div>
+## 📋 Sobre o Projeto
 
-            {/* Key Highlights */}
-            <div className="bg-gradient-to-br from-slate-800/50 to-blue-900/30 border border-blue-700/30 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                <Star className="w-6 h-6 text-yellow-400" />
-                Destaques do Projeto
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {[
-                  {
-                    title: 'Arquitetura Orientada a Objetos',
-                    desc: 'Design patterns e princípios SOLID implementados',
-                    icon: Database,
-                  },
-                  {
-                    title: 'Sistema de Auditoria Integrado',
-                    desc: 'Rastreamento completo de todas as transações',
-                    icon: Activity,
-                  },
-                  {
-                    title: 'Múltiplos Tipos de Conta',
-                    desc: 'Corrente, Poupança e Investimento com lógicas específicas',
-                    icon: TrendingUp,
-                  },
-                  {
-                    title: 'Validações Robustas',
-                    desc: 'Sistema de exceções customizado para garantir integridade',
-                    icon: Shield,
-                  },
-                ].map((item, i) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={i} className="flex gap-4">
-                      <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-6 h-6 text-blue-400" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-lg mb-1">{item.title}</h4>
-                        <p className="text-gray-400 text-sm">{item.desc}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+Este projeto é um **sistema bancário robusto** desenvolvido em Java que implementa funcionalidades completas de gestão bancária. O diferencial está na utilização de **anotações JML (Java Modeling Language)** para especificações formais de comportamento, demonstrando boas práticas de engenharia de software e preocupação com qualidade de código.
 
-            {/* About JML */}
-            <div className="bg-gradient-to-r from-amber-900/20 to-orange-900/20 border border-amber-700/30 rounded-2xl p-8">
-              <div className="flex items-start gap-4">
-                <AlertTriangle className="w-8 h-8 text-amber-400 flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-2xl font-bold mb-3 text-amber-400">Sobre as Anotações JML</h3>
-                  <p className="text-gray-300 mb-4">
-                    Este projeto inclui anotações <strong>JML (Java Modeling Language)</strong> para especificações formais 
-                    de comportamento. As anotações JML estão em fase de desenvolvimento e demonstram a intenção de criar 
-                    código com <strong>mínimo de erros possíveis</strong> através de contratos formais.
-                  </p>
-                  <p className="text-gray-400 text-sm">
-                    <strong>Nota:</strong> Algumas especificações JML podem apresentar inconsistências e estão sendo refinadas. 
-                    O foco principal é demonstrar conhecimento em técnicas avançadas de verificação de software.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+### 🎯 Objetivos
 
-        {/* Features Tab */}
-        {activeTab === 'features' && (
-          <div className="space-y-8 animate-fadeIn">
-            <h2 className="text-4xl font-bold mb-8">Funcionalidades Principais</h2>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  title: 'Gestão de Clientes',
-                  items: ['Cadastro completo com validação de CPF', 'Categorias: Comum e Premium', 'Cálculo automático de limite de crédito', 'Histórico de transações'],
-                  color: 'blue',
-                },
-                {
-                  title: 'Contas Bancárias',
-                  items: ['Conta Corrente com cheque especial', 'Conta Poupança com rendimento', 'Conta Investimento com carteira', 'Geração automática de números únicos'],
-                  color: 'green',
-                },
-                {
-                  title: 'Operações Financeiras',
-                  items: ['Depósitos e saques validados', 'Transferências entre contas', 'Sistema de tarifas diferenciadas', 'Controle de saldo em tempo real'],
-                  color: 'purple',
-                },
-                {
-                  title: 'Empréstimos',
-                  items: ['Cálculo de juros compostos', 'Parcelamento configurável', 'Controle de limite de crédito', 'Sistema de multas por atraso'],
-                  color: 'red',
-                },
-                {
-                  title: 'Investimentos',
-                  items: ['CDB, Tesouro Direto, LCI, LCA, Fundos', 'Rentabilidade automática', 'Período de carência respeitado', 'Resgate com cálculo de rendimento'],
-                  color: 'cyan',
-                },
-                {
-                  title: 'Auditoria & Compliance',
-                  items: ['Log completo de transações', 'Detecção de operações suspeitas', 'Alertas para valores elevados', 'Conformidade automatizada'],
-                  color: 'amber',
-                },
-              ].map((feature, i) => (
-                <div key={i} className={`bg-gradient-to-br from-slate-800/50 to-${feature.color}-900/30 border border-${feature.color}-700/30 rounded-xl p-6`}>
-                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                    <CheckCircle className={`w-5 h-5 text-${feature.color}-400`} />
-                    {feature.title}
-                  </h3>
-                  <ul className="space-y-2">
-                    {feature.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-2 text-gray-300 text-sm">
-                        <span className={`w-1.5 h-1.5 bg-${feature.color}-400 rounded-full mt-2 flex-shrink-0`}></span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+- Demonstrar domínio de **Programação Orientada a Objetos** avançada
+- Implementar **Design Patterns** e princípios SOLID
+- Utilizar **JML** para contratos formais e verificação de software
+- Criar um sistema com **mínimo de erros possíveis** através de especificações formais
+- Aplicar tratamento robusto de exceções e validações
 
-        {/* Architecture Tab */}
-        {activeTab === 'architecture' && (
-          <div className="space-y-8 animate-fadeIn">
-            <h2 className="text-4xl font-bold mb-8">Arquitetura do Sistema</h2>
+### ⚠️ Nota sobre JML
 
-            {/* Class Diagram */}
-            <div className="bg-gradient-to-br from-slate-800/50 to-blue-900/30 border border-blue-700/30 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Diagrama de Classes</h3>
-              <div className="bg-slate-900/50 rounded-lg p-6 overflow-x-auto">
-                <pre className="text-sm text-gray-300">
-{`┌─────────────────┐
-│     Pessoa      │ (Abstract)
-├─────────────────┤
-│ - nome          │
-│ - cpf           │
-│ - endereco      │
-│ - telefone      │
-└────────┬────────┘
-         │
-    ┌────┴────┐
-    │         │
-┌───▼────┐ ┌─▼───────────┐
-│Cliente │ │ Funcionario │
-├────────┤ ├─────────────┤
-│ - id   │ │ - matricula │
-│ - tipo │ │ - cargo     │
-│ - renda│ │ - salario   │
-└───┬────┘ └─────────────┘
-    │
-    │ 1..*
-    │
-┌───▼──────────┐
-│    Conta     │ (Abstract)
-├──────────────┤
-│ - numero     │
-│ - saldo      │
-│ - titular    │
+> **Importante:** As anotações JML estão em fase de desenvolvimento e refinamento. Algumas especificações podem apresentar inconsistências. O foco principal é demonstrar conhecimento em técnicas avançadas de verificação formal de software e intenção de criar código confiável através de contratos bem definidos.
+
+---
+
+## ✨ Funcionalidades
+
+### 👥 Gestão de Clientes
+- ✅ Cadastro completo com validação de CPF
+- ✅ Categorias: **Comum** e **Premium**
+- ✅ Cálculo automático de limite de crédito baseado na renda
+- ✅ Histórico completo de transações por cliente
+- ✅ Atualização de dados cadastrais
+- ✅ Remoção com verificação de contas ativas
+
+### 💳 Contas Bancárias
+
+#### Conta Corrente
+- Cheque especial configurável
+- Controle de dias em débito
+- Cálculo de juros sobre saldo negativo
+- Tarifa diferenciada por tipo de cliente
+
+#### Conta Poupança
+- Rendimento percentual automático
+- Taxa de rendimento configurável
+- Sem tarifa de manutenção
+- Aplicação de juros mensais
+
+#### Conta Investimento
+- Suporte a múltiplos tipos de investimento
+- Carteira de investimentos completa
+- Cálculo automático de rentabilidade
+- Controle de período de carência
+
+### 💰 Operações Financeiras
+- 🔄 **Depósitos** com validação de valores
+- 💵 **Saques** com verificação de saldo e limites
+- 🔀 **Transferências** entre contas com rollback automático
+- 📊 **Extrato** completo de movimentações
+- 💳 **Tarifas** diferenciadas por tipo de conta e cliente
+
+### 📈 Sistema de Investimentos
+
+Tipos disponíveis:
+- **CDB** - 0.8% a.m., carência de 90 dias
+- **Tesouro Direto** - 0.6% a.m., carência de 180 dias
+- **LCI** - 0.7% a.m., carência de 90 dias
+- **LCA** - 0.7% a.m., carência de 90 dias
+- **Fundo Renda Fixa** - 0.5% a.m., carência de 30 dias
+
+Funcionalidades:
+- Aplicação direta da conta investimento
+- Cálculo de rendimento com juros compostos
+- Resgate com verificação de carência
+- Histórico de investimentos ativos e resgatados
+
+### 🏦 Empréstimos
+- 📝 Contratação com análise de limite de crédito
+- 💵 Sistema de parcelas com juros compostos
+- 📅 Controle de vencimento e pagamentos
+- ⚠️ Multa e juros por atraso automáticos
+- 📊 Acompanhamento de saldo devedor
+
+### 🔍 Auditoria & Compliance
+- 📋 Log completo de todas as transações
+- 🚨 Detecção automática de operações suspeitas
+- ⚡ Alertas para transações de alto valor (≥ R$ 50.000)
+- 📄 Marcação de operações que requerem documentação (> R$ 10.000)
+- ✅ Verificação de conformidade por cliente
+
+### 👔 Gestão de Funcionários
+- Cadastro com matrícula única
+- Controle de cargo e salário
+- Cálculo de bonificações (10% do salário)
+- Dados completos de contato
+
+---
+
+## 🏗️ Arquitetura
+
+### Estrutura de Classes
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                         Pessoa (Abstract)                    │
+│  - nome, cpf, endereco, telefone                            │
+└────────────────────────┬────────────────────────────────────┘
+                         │
+            ┌────────────┴────────────┐
+            │                         │
+   ┌────────▼────────┐       ┌───────▼──────────┐
+   │    Cliente      │       │   Funcionario    │
+   ├─────────────────┤       ├──────────────────┤
+   │ - id            │       │ - matricula      │
+   │ - tipoCliente   │       │ - cargo          │
+   │ - renda         │       │ - salario        │
+   │ - contas        │       └──────────────────┘
+   │ - emprestimos   │
+   └────────┬────────┘
+            │
+            │ 1..*
+            │
+   ┌────────▼──────────────────────┐
+   │      Conta (Abstract)         │
+   ├───────────────────────────────┤
+   │ - numero                      │
+   │ - saldo                       │
+   │ - titular: Cliente            │
+   │ - historicoTransacoes         │
+   ├───────────────────────────────┤
+   │ + depositar()                 │
+   │ + sacar() (abstract)          │
+   │ + calcularTarifa() (abstract) │
+   └───────────┬───────────────────┘
+               │
+    ┌──────────┼──────────────┐
+    │          │              │
+┌───▼────┐ ┌──▼────┐ ┌───────▼────────┐
+│Corrente│ │Poupança│ │ Investimento   │
+├────────┤ ├────────┤ ├────────────────┤
+│-limite │ │-taxa   │ │-carteira       │
+│Cheque  │ │Rendi-  │ │:List<Investi-  │
+│Especial│ │mento   │ │mento>          │
+└────────┘ └────────┘ └────────────────┘
+```
+
+### Design Patterns Implementados
+
+| Pattern | Aplicação | Benefício |
+|---------|-----------|-----------|
+| **Service Layer** | `BancoService` centraliza lógica de negócio | Separação de responsabilidades |
+| **Factory Method** | Criação de diferentes tipos de conta | Extensibilidade |
+| **Strategy** | Cálculo de tarifas por tipo de conta | Flexibilidade de cálculo |
+| **Template Method** | Classe abstrata `Conta` | Reutilização de código |
+
+### Principais Classes
+
+#### 🎯 BancoService
+**Responsabilidade:** Orquestrar todas as operações do sistema
+
+```java
+public class BancoService {
+    // Gerencia coleções de entidades
+    private List<Cliente> clientes;
+    private List<Conta> contas;
+    private List<Funcionario> funcionarios;
+    private List<Emprestimo> emprestimos;
+    private SistemaAuditoria auditoria;
+    
+    // Operações principais
+    public Cliente cadastrarCliente(...)
+    public Conta criarContaCorrente(...)
+    public void realizarTransferencia(...)
+    public Emprestimo criarEmprestimo(...)
+}
+```
+
+#### 👤 Cliente & Funcionario
+**Herdam de:** `Pessoa` (classe abstrata)
+
+**Diferencial do Cliente:**
+- Cálculo automático de limite de crédito
+- Gestão de múltiplas contas
+- Histórico de transações
+- Controle de empréstimos ativos
+
+#### 💳 Hierarquia de Contas
+**Classe Base:** `Conta` (abstrata)
+
+**Implementações:**
+1. `ContaCorrente` - Com cheque especial
+2. `ContaPoupanca` - Com rendimento
+3. `ContaInvestimento` - Com carteira de investimentos
+
+Cada tipo implementa:
+- `sacar()` - Lógica específica de saque
+- `calcularTarifa()` - Tarifa diferenciada
+
+#### 📝 Transacao
+**Características:**
+- Imutável (dados não podem ser alterados)
+- ID único sequencial
+- Timestamp automático
+- Referências para contas origem/destino
+- Tipos definidos por enum `TipoTransacao`
+
+#### 🔍 SistemaAuditoria
+**Funcionalidades:**
+- Registro de todas as transações
+- Detecção de padrões suspeitos
+- Geração de alertas
+- Verificação de conformidade
+
+---
+
+## 🚀 Instalação
+
+### Pré-requisitos
+
+- ☕ **Java JDK 11** ou superior
+- 🛠️ **IDE** (IntelliJ IDEA, Eclipse, VS Code com Extension Pack for Java)
+- 📦 **Git** para clonar o repositório
+
+### Passos de Instalação
+
+#### 1️⃣ Clone o repositório
+
+```bash
+git clone https://github.com/seu-usuario/sistema-bancario-java.git
+cd sistema-bancario-java
+```
+
+#### 2️⃣ Compilar via linha de comando
+
+```bash
+# Criar diretório de saída
+mkdir -p bin
+
+# Compilar todos os arquivos Java
+javac -d bin src/*.java
+```
+
+#### 3️⃣ Executar a aplicação
+
+```bash
+java -cp bin Main
+```
+
+### Usando uma IDE
+
+#### IntelliJ IDEA
+1. `File` → `Open` → Selecione a pasta do projeto
+2. A IDE detectará automaticamente os arquivos Java
+3. Localize `Main.java` no explorador de arquivos
+4. Clique com botão direito → `Run 'Main.main()'`
+
+#### Eclipse
+1. `File` → `Import` → `Existing Projects into Workspace`
+2. Selecione a pasta do projeto
+3. Localize `Main.java` no Package Explorer
+4. Clique com botão direito → `Run As` → `Java Application`
+
+#### VS Code
+1. Abra a pasta do projeto
+2. Instale a extensão "Extension Pack for Java"
+3. Abra `Main.java`
+4. Clique em `Run` acima do método `main()`
+
+---
+
+## 💻 Como Usar
+
+### Interface de Menu
+
+O sistema apresenta um menu interativo completo no terminal:
+
+```
+=== PAINEL DE CONTROLE DO BANCO ===
+
+--- Clientes ---
+1. Cadastrar Cliente
+2. Listar Clientes
+3. Atualizar Cliente
+4. Remover Cliente
+
+--- Contas ---
+5. Criar Conta Corrente
+6. Criar Conta Poupança
+7. Criar Conta Investimento
+8. Consultar Saldo e Detalhes
+9. Remover Conta
+
+--- Operações Básicas ---
+10. Realizar Depósito
+11. Realizar Saque
+12. Realizar Transferência
+
+--- Investimentos & Poupança ---
+13. Aplicar Rendimento (Poupança)
+14. Realizar Investimento
+15. Resgatar Investimento
+
+--- Empréstimos ---
+16. Contratar Empréstimo
+17. Pagar Parcela de Empréstimo
+18. Listar Empréstimos
+
+--- Administrativo & Auditoria ---
+19. Cadastrar Funcionário
+20. Listar Funcionários
+21. Atualizar Limites/Taxas
+22. [AUDITORIA] Ver Transações Auditadas
+23. [AUDITORIA] Ver Alertas de Fraude
+24. [RELATÓRIO] Saldo Total do Banco
+
+0. Sair
+```
+
+### Exemplos Práticos
+
+#### 📝 Cadastrar um Cliente
+
+```
+1. Selecione opção: 1
+2. Nome: João Silva
+3. CPF: 123.456.789-00
+4. Endereço: Rua A, 123
+5. Telefone: 83999887766
+6. Tipo: premium (ou comum)
+7. Renda: 5000
+
+✅ Cliente cadastrado com sucesso!
+💰 Limite de crédito calculado: R$ 25.000,00 (renda × 5 para premium)
+```
+
+#### 🏦 Criar Conta e Realizar Operações
+
+```bash
+# Criar conta corrente
+Opção: 5
+CPF: 123.456.789-00
+Limite Cheque Especial: 1000
+✅ Conta criada: 1234
+
+# Realizar depósito
+Opção: 10
+Conta: 1234
+Valor: 500
+✅ Depósito realizado
+
+# Realizar saque
+Opção: 11
+Conta: 1234
+Valor: 200
+✅ Saque realizado
+💵 Saldo atual: R$ 300,00
+```
+
+#### 📈 Fazer um Investimento
+
+```bash
+# Criar conta investimento
+Opção: 7
+CPF: 123.456.789-00
+✅ Conta Investimento criada: 5678
+
+# Depositar valor inicial
+Opção: 10
+Conta: 5678
+Valor: 10000
+
+# Realizar investimento
+Opção: 14
+Conta: 5678
+Tipos: 1-CDB, 2-TESOURO, 3-LCI, 4-LCA, 5-FUNDO
+Escolha: 1 (CDB)
+Valor: 5000
+✅ Investimento realizado em CDB
+📊 Rentabilidade: 0.8% ao mês
+⏳ Carência: 90 dias
+```
+
+#### 💰 Contratar Empréstimo
+
+```bash
+Opção: 16
+CPF: 123.456.789-00
+Valor: 10000
+Parcelas: 12
+Taxa Juros Mensal: 2.5
+✅ Empréstimo contratado!
+📋 Valor da parcela: R$ 941,67
+💳 Primeiro vencimento: [data+30dias]
+```
+
+### Uso Programático
+
+```java
+// Inicializar o sistema
+BancoService banco = new BancoService();
+
+// Cadastrar cliente premium
+Cliente cliente = banco.cadastrarCliente(
+    "Maria Santos",
+    "987.654.321-00",
+    "Av. Principal, 456",
+    "83988776655",
+    "premium",
+    8000.00
+);
+
+// Criar conta corrente com limite
+Conta contaCorrente = banco.criarContaCorrente(
+    "987.654.321-00",
+    2000.00  // Limite cheque especial
+);
+
+// Realizar operações
+banco.realizarDeposito(contaCorrente.getNumero(), 1000.00);
+banco.realizarSaque(contaCorrente.getNumero(), 300.00);
+
+// Criar conta poupança
+Conta poupanca = banco.criarContaPoupanca("987.654.321-00");
+banco.realizarDeposito(poupanca.getNumero(), 5000.00);
+
+// Aplicar rendimento
+if (poupanca instanceof ContaPoupanca) {
+    ((ContaPoupanca) poupanca).renderJuros();
+}
+
+// Transferência entre contas
+banco.realizarTransferencia(
+    contaCorrente.getNumero(),
+    poupanca.getNumero(),
+    500.00
+);
+
+// Consultar auditoria
+List<Transacao> transacoes = banco.getAuditoria()
+    .getTransacoesAuditadas();
+List<String> alertas = banco.getAuditoria()
+    .getAlertas();
+```
+
+---
+
+## 🔐 JML e Verificação Formal
+
+### O que é JML?
+
+**JML (Java Modeling Language)** é uma linguagem de especificação comportamental para Java que permite:
+- ✅ Definir **pré-condições** (requisitos para executar um método)
+- ✅ Definir **pós-condições** (garantias após execução)
+- ✅ Especificar **invariantes** (propriedades que sempre devem ser verdadeiras)
+- ✅ Documentar **contratos** formais entre métodos e chamadores
+
+### Por que usar JML?
+
+1. **Documentação Precisa** - Especificações formais são mais claras que comentários
+2. **Detecção de Bugs** - Ferramentas podem verificar automaticamente o código
+3. **Melhor Design** - Pensar em contratos melhora a arquitetura
+4. **Confiabilidade** - Código com contratos formais tende a ter menos erros
+
+### Exemplo de Especificação JML
+
+```java
+//@ requires valor > 0;
+//@ requires valor <= getSaldo() + limiteChequeEspecial;
+//@ ensures getSaldo() == \old(getSaldo()) - valor;
+//@ signals (SaldoInsuficienteException e) valor > getSaldo() + limiteChequeEspecial;
+public void sacar(double valor) throws SaldoInsuficienteException {
+    if (valor <= 0) {
+        throw new ValidacaoException("Valor deve ser positivo");
+    }
+    
+    double saldoDisponivel = getSaldo() + limiteChequeEspecial;
+    
+    if (valor > saldoDisponivel) {
+        throw new SaldoInsuficienteException(
+            "Saldo insuficiente. Disponível: R$ " + saldoDisponivel
+        );
+    }
+    
+    setSaldo(getSaldo() - valor);
+}
+```
+
+**Explicação:**
+- `requires` - Pré-condições que devem ser verdadeiras antes da execução
+- `ensures` - Pós-condições garantidas após execução bem-sucedida
+- `signals` - Especifica quando exceções são lançadas
+- `\old()` - Referencia o valor anterior de uma variável
+
+### Ferramentas de Verificação
+
+Para verificar as especificações JML, você pode usar:
+
+- **OpenJML** - Verificador estático para JML
+- **KeY** - Provador de teoremas para Java+JML
+- **ESC/Java2** - Extended Static Checker
+
+```bash
+# Exemplo de verificação com OpenJML (quando configurado)
+openjml -check src/Conta.java
+```
+
+### Status do JML neste Projeto
+
+> ⚠️ **Em Desenvolvimento:** As especificações JML estão sendo refinadas e podem conter inconsistências. O objetivo é demonstrar conhecimento da técnica e intenção de criar software verificável formalmente.
+
+**Próximos Passos:**
+- [ ] Adicionar especificações JML completas em todas as classes
+- [ ] Configurar OpenJML para verificação automática
+- [ ] Corrigir inconsistências nas especificações existentes
+- [ ] Adicionar invariantes de classe completos
+- [ ] Documentar casos de teste baseados em contratos
+
+---
+
+## 🧪 Tratamento de Exceções
+
+### Hierarquia de Exceções
+
+```
+Exception
+   │
+   ├─ ValidacaoException
+   │  └─ Erros de validação de negócio
+   │
+   └─ SaldoInsuficienteException
+      └─ Saldo insuficiente para operação
+```
+
+### Exemplos de Tratamento
+
+```java
+try {
+    banco.realizarSaque(numeroConta, 1000.00);
+} catch (SaldoInsuficienteException e) {
+    System.err.println("❌ " + e.getMessage());
+    // Saldo insuficiente. Disponível: R$ 500.00
+} catch (ValidacaoException e) {
+    System.err.println("⚠️ " + e.getMessage());
+    // O valor do saque deve ser positivo
+}
+```
+
+### Validações Implementadas
+
+- ✅ CPF único no cadastro
+- ✅ Valores positivos em operações
+- ✅ Saldo suficiente para saques
+- ✅ Contas existentes em transferências
+- ✅ Limite de crédito em empréstimos
+- ✅ Período de carência em investimentos
+- ✅ Parcelas válidas em empréstimos
+- ✅ Dados obrigatórios no cadastro
+
+---
+
+## 📊 Diagramas
+
+### Fluxo de Transferência
+
+```
+┌─────────────┐
+│   Cliente   │
+│  solicita   │
+│transferência│
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────────────────────┐
+│      BancoService               │
+│  realizarTransferencia()        │
+└──────┬──────────────────────────┘
+       │
+       ├─── 1. Validar contas
+       │
+       ├─── 2. Sacar da origem
+       │         │
+       │         ├─ Verificar saldo
+       │         └─ Deduzir valor
+       │
+       ├─── 3. Depositar no destino
+       │         │
+       │         └─ Adicionar valor
+       │
+       ├─── 4. Registrar transação
+       │         │
+       │         └─ SistemaAuditoria
+       │
+       └─── 5. Se erro → Rollback
+```
+
+### Ciclo de Vida de um Investimento
+
+```
+┌──────────────┐
+│  APLICAÇÃO   │  ← Cliente investe valor
 └──────┬───────┘
        │
-  ┌────┼────┬──────────┐
-  │    │    │          │
-┌─▼──┐ │ ┌──▼──────┐ ┌▼──────────┐
-│ CC │ │ │  CP     │ │    CI     │
-└────┘ │ └─────────┘ └───────────┘
+       ▼
+┌──────────────┐
+│    ATIVO     │  ← Rendimento calculado diariamente
+│ (Carência)   │    Não pode resgatar
+└──────┬───────┘
        │
-    ┌──▼──────────┐
-    │ BancoService│
-    ├─────────────┤
-    │ + criar()   │
-    │ + listar()  │
-    │ + operar()  │
-    └─────────────┘`}
-                </pre>
-              </div>
-            </div>
+       │ Após período de carência
+       │
+       ▼
+┌──────────────┐
+│    ATIVO     │  ← Pode resgatar a qualquer momento
+│ (Disponível) │    Rendimento continua
+└──────┬───────┘
+       │
+       │ Cliente solicita resgate
+       │
+       ▼
+┌──────────────┐
+│  RESGATADO   │  ← Valor + rendimento volta para conta
+└──────────────┘
+```
 
-            {/* Design Patterns */}
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  pattern: 'Service Layer',
-                  desc: 'BancoService centraliza toda lógica de negócio',
-                  icon: Database,
-                },
-                {
-                  pattern: 'Factory Method',
-                  desc: 'Criação de diferentes tipos de conta',
-                  icon: Code,
-                },
-                {
-                  pattern: 'Strategy',
-                  desc: 'Cálculo de tarifas por tipo de conta',
-                  icon: TrendingUp,
-                },
-              ].map((item, i) => {
-                const Icon = item.icon;
-                return (
-                  <div key={i} className="bg-gradient-to-br from-slate-800/50 to-purple-900/30 border border-purple-700/30 rounded-xl p-6">
-                    <Icon className="w-8 h-8 text-purple-400 mb-3" />
-                    <h4 className="font-bold text-lg mb-2">{item.pattern}</h4>
-                    <p className="text-gray-400 text-sm">{item.desc}</p>
-                  </div>
-                );
-              })}
-            </div>
+---
 
-            {/* Key Classes */}
-            <div className="bg-gradient-to-br from-slate-800/50 to-blue-900/30 border border-blue-700/30 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Classes Principais</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
-                  { name: 'BancoService', desc: 'Orquestra todas as operações do sistema' },
-                  { name: 'Cliente / Funcionario', desc: 'Hierarquia de pessoas no sistema' },
-                  { name: 'Conta (Abstract)', desc: 'Base para todos os tipos de conta' },
-                  { name: 'Emprestimo', desc: 'Gestão completa de empréstimos' },
-                  { name: 'Investimento', desc: 'Produtos de investimento com rentabilidade' },
-                  { name: 'SistemaAuditoria', desc: 'Rastreamento e alertas de segurança' },
-                  { name: 'Transacao', desc: 'Registro imutável de operações' },
-                  { name: 'ValidacaoException', desc: 'Tratamento customizado de erros' },
-                ].map((cls, i) => (
-                  <div key={i} className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-4">
-                    <Code className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-mono text-blue-400 font-semibold">{cls.name}</div>
-                      <div className="text-gray-400 text-sm mt-1">{cls.desc}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+## 🔧 Tecnologias e Conceitos
 
-        {/* Installation Tab */}
-        {activeTab === 'installation' && (
-          <div className="space-y-8 animate-fadeIn">
-            <h2 className="text-4xl font-bold mb-8">Instalação e Configuração</h2>
+### Tecnologias
 
-            {/* Prerequisites */}
-            <div className="bg-gradient-to-br from-slate-800/50 to-blue-900/30 border border-blue-700/30 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Pré-requisitos</h3>
-              <div className="space-y-4">
-                {[
-                  { name: 'Java Development Kit', version: '11 ou superior', icon: '☕' },
-                  { name: 'IDE', version: 'IntelliJ IDEA, Eclipse ou VS Code', icon: '🛠️' },
-                  { name: 'Git', version: 'Para clonar o repositório', icon: '📦' },
-                ].map((req, i) => (
-                  <div key={i} className="flex items-center gap-4 bg-slate-900/50 rounded-lg p-4">
-                    <span className="text-3xl">{req.icon}</span>
-                    <div>
-                      <div className="font-semibold">{req.name}</div>
-                      <div className="text-gray-400 text-sm">{req.version}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+- ☕ **Java 11+** - Linguagem principal
+- 📝 **JML** - Especificações formais
+- 🧪 **Exceptions** - Tratamento robusto de erros
+- 📦 **Collections Framework** - Gerenciamento de dados
 
-            {/* Installation Steps */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold">Passos de Instalação</h3>
-              
-              {[
-                {
-                  step: '1',
-                  title: 'Clone o repositório',
-                  code: 'git clone https://github.com/seu-usuario/sistema-bancario-java.git\ncd sistema-bancario-java',
-                  id: 'clone',
-                },
-                {
-                  step: '2',
-                  title: 'Compile o projeto',
-                  code: 'javac -d bin src/*.java',
-                  id: 'compile',
-                },
-                {
-                  step: '3',
-                  title: 'Execute a aplicação',
-                  code: 'java -cp bin Main',
-                  id: 'run',
-                },
-              ].map((item, i) => (
-                <div key={i} className="bg-gradient-to-br from-slate-800/50 to-green-900/30 border border-green-700/30 rounded-xl overflow-hidden">
-                  <div className="bg-green-900/30 px-6 py-3 border-b border-green-700/30">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center font-bold">
-                        {item.step}
-                      </div>
-                      <h4 className="font-semibold text-lg">{item.title}</h4>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <div className="relative">
-                      <pre className="bg-slate-900 rounded-lg p-4 overflow-x-auto">
-                        <code className="text-sm text-green-400">{item.code}</code>
-                      </pre>
-                      <button
-                        onClick={() => copyToClipboard(item.code, item.id)}
-                        className="absolute top-2 right-2 px-3 py-1 bg-slate-700 hover:bg-slate-600 rounded text-xs transition-colors"
-                      >
-                        {copiedCode === item.id ? '✓ Copiado!' : 'Copiar'}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+### Conceitos Aplicados
 
-            {/* Using IDE */}
-            <div className="bg-gradient-to-br from-slate-800/50 to-purple-900/30 border border-purple-700/30 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-4">Usando uma IDE</h3>
-              <div className="space-y-3 text-gray-300">
-                <p><strong>IntelliJ IDEA / Eclipse:</strong></p>
-                <ol className="list-decimal list-inside space-y-2 ml-4">
-                  <li>Abra a IDE e selecione "Import Project" ou "Open"</li>
-                  <li>Navegue até a pasta do projeto clonado</li>
-                  <li>A IDE detectará automaticamente os arquivos Java</li>
-                  <li>Localize a classe <code className="bg-slate-900 px-2 py-1 rounded text-blue-400">Main.java</code></li>
-                  <li>Clique com botão direito → "Run 'Main.main()'"</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-        )}
+#### Programação Orientada a Objetos
+- ✅ Encapsulamento
+- ✅ Herança
+- ✅ Polimorfismo
+- ✅ Abstração
+- ✅ Classes abstratas e interfaces
 
-        {/* Usage Tab */}
-        {activeTab === 'usage' && (
-          <div className="space-y-8 animate-fadeIn">
-            <h2 className="text-4xl font-bold mb-8">Como Usar o Sistema</h2>
+#### Princípios SOLID
+- **S** - Single Responsibility: Cada classe tem uma responsabilidade clara
+- **O** - Open/Closed: Extensível sem modificar código existente
+- **L** - Liskov Substitution: Subtipos podem substituir tipos base
+- **I** - Interface Segregation: Interfaces específicas e coesas
+- **D** - Dependency Inversion: Depende de abstrações, não implementações
 
-            {/* Quick Start */}
-            <div className="bg-gradient-to-br from-slate-800/50 to-cyan-900/30 border border-cyan-700/30 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Início Rápido</h3>
-              <p className="text-gray-300 mb-6">
-                O sistema oferece um menu interativo completo no terminal. Após iniciar a aplicação, 
-                você terá acesso a 24 opções organizadas por categoria.
-              </p>
-              
-              <div className="bg-slate-900/50 rounded-lg p-6">
-                <div className="font-mono text-sm text-green-400">
-                  <div>=== PAINEL DE CONTROLE DO BANCO ===</div>
-                  <div className="mt-2 text-gray-400">--- Clientes ---</div>
-                  <div>1. Cadastrar Cliente</div>
-                  <div>2. Listar Clientes</div>
-                  <div className="mt-2 text-gray-400">--- Contas ---</div>
-                  <div>5. Criar Conta Corrente</div>
-                  <div>6. Criar Conta Poupança</div>
-                  <div className="mt-2 text-gray-400">--- Operações Básicas ---</div>
-                  <div>10. Realizar Depósito</div>
-                  <div>11. Realizar Saque</div>
-                  <div>12. Realizar Transferência</div>
-                  <div className="mt-2">...</div>
-                </div>
-              </div>
-            </div>
+#### Boas Práticas
+- 📋 Validação de entrada
+- 🔒 Encapsulamento de dados
+- 🎯 Métodos coesos e com propósito único
+- 📝 Documentação via JML
+- ⚠️ Tratamento apropriado de exceções
+- 🔄 Imutabilidade onde apropriado
 
-            {/* Usage Examples */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold">Exemplos de Uso</h3>
+---
 
-              {[
-                {
-                  title: 'Cadastrar um Cliente',
-                  steps: [
-                    'Selecione a opção 1 no menu',
-                    'Informe: Nome, CPF, Endereço, Telefone',
-                    'Escolha o tipo: "comum" ou "premium"',
-                    'Informe a renda mensal',
-                    'O sistema calculará automaticamente o limite de crédito',
-                  ],
-                  color: 'blue',
-                },
-                {
-                  title: 'Criar uma Conta Corrente',
-                  steps: [
-                    'Selecione a opção 5',
-                    'Digite o CPF do cliente cadastrado',
-                    'Defina o limite do cheque especial',
-                    'Um número de conta único será gerado',
-                  ],
-                  color: 'green',
-                },
-                {
-                  title: 'Realizar um Investimento',
-                  steps: [
-                    'Crie uma Conta Investimento (opção 7)',
-                    'Deposite um valor inicial (opção 10)',
-                    'Escolha a opção 14 para investir',
-                    'Selecione: CDB, Tesouro Direto, LCI, LCA ou Fundo',
-                    'O rendimento será calculado automaticamente',
-                  ],
-                  color: 'purple',
-                },
-                {
-                  title: 'Contratar um Empréstimo',
-                  steps: [
-                    'Selecione a opção 16',
-                    'Informe o CPF do cliente',
-                    'Digite o valor desejado (limitado ao crédito disponível)',
-                    'Defina o número de parcelas e taxa de juros',
-                    'Use a opção 17 para pagar as parcelas',
-                  ],
-                  color: 'red',
-                },
-              ].map((example, i) => (
-                <div key={i} className={`bg-gradient-to-br from-slate-800/50 to-${example.color}-900/30 border border-${example.color}-700/30 rounded-xl p-6`}>
-                  <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
-                    <Terminal className={`w-5 h-5 text-${example.color}-400`} />
-                    {example.title}
-                  </h4>
-                  <ol className="space-y-2">
-                    {example.steps.map((step, j) => (
-                      <li key={j} className="flex gap-3 text-gray-300">
-                        <span className={`w-6 h-6 bg-${example.color}-500/20 text-${example.color}-400 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-semibold`}>
-                          {j + 1}
-                        </span>
-                        <span className="pt-0.5">{step}</span>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              ))}
-            </div>
+## 📈 Melhorias Futuras
 
-            {/* Code Example */}
-            <div className="bg-gradient-to-br from-slate-800/50 to-amber-900/30 border border-amber-700/30 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Exemplo de Código</h3>
-              <p className="text-gray-300 mb-4">Como usar a classe BancoService programaticamente:</p>
-              <div className="relative">
-                <pre className="bg-slate-900 rounded-lg p-6 overflow-x-auto">
-                  <code className="text-sm text-gray-300">{`BancoService banco = new BancoService();
+### Curto Prazo
+- [ ] Completar especificações JML em todas as classes
+- [ ] Adicionar testes unitários com JUnit
+- [ ] Implementar persistência de dados (banco de dados)
+- [ ] Criar interface gráfica (JavaFX ou Swing)
 
-// Cadastrar cliente
-Cliente cliente = banco.cadastrarCliente(
-    "João Silva", 
-    "123.456.789-00",
-    "Rua A, 123",
-    "83999887766",
-    "premium",
-    5000.00
-);
+### Médio Prazo
+- [ ] API REST com Spring Boot
+- [ ] Autenticação e autorização
+- [ ] Relatórios em PDF
+- [ ] Notificações por email/SMS
+- [ ] Dashboard administrativo
 
-// Criar conta corrente
-Conta conta = banco.criarContaCorrente(
-    "123.456.789-00", 
-    1000.00
-);
+### Longo Prazo
+- [ ] Integração com APIs bancárias reais
+- [ ] Sistema de pagamentos PIX
+- [ ] App mobile (Android/iOS)
+- [ ] Análise de crédito com Machine Learning
+- [ ] Blockchain para auditoria
 
-// Realizar depósito
-banco.realizarDeposito(conta.getNumero(), 500.00);
+---
 
-// Consultar saldo
-System.out.println("Saldo: R$ " + conta.getSaldo());`}</code>
-                </pre>
-                <button
-                  onClick={() => copyToClipboard(`BancoService banco = new BancoService();
+## 🤝 Contribuindo
 
-// Cadastrar cliente
-Cliente cliente = banco.cadastrarCliente(
-    "João Silva", 
-    "123.456.789-00",
-    "Rua A, 123",
-    "83999887766",
-    "premium",
-    5000
+Contribuições são bem-vindas! Se você quer melhorar este projeto:
+
+1. Faça um Fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
+4. Push para a branch (`git push origin feature/MinhaFeature`)
+5. Abra um Pull Request
+
+### Áreas que precisam de ajuda
+- 📝 Completar especificações JML
+- 🧪 Adicionar testes unitários
+- 📚 Melhorar documentação
+- 🐛 Reportar e corrigir bugs
+- ✨ Sugerir novas funcionalidades
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+## 👨‍💻 Autor
+
+**Seu Nome**
+
+- GitHub: [@seu-usuario](https://github.com/seu-usuario)
+- LinkedIn: [Seu Nome](https://linkedin.com/in/seu-perfil)
+- Email: seu.email@exemplo.com
+
+---
+
+## 🙏 Agradecimentos
+
+- Comunidade Java pela excelente documentação
+- Projeto OpenJML pelos recursos de verificação formal
+- Todos que contribuíram com ideias e sugestões
+
+---
+
+<div align="center">
+
+### ⭐ Se este projeto foi útil, considere dar uma estrela!
+
+**Desenvolvido com ❤️ e muito ☕**
+
+</div>
