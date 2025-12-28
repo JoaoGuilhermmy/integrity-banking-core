@@ -13,7 +13,7 @@
 
 ---
 
-**[US Versão em Inglês](README.en.md)**
+**[us Versão em Inglês](README.en.md)**
 
 </div>
 
