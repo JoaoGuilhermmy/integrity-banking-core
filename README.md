@@ -11,6 +11,10 @@
 
 [📖 Documentação](#documentação) • [🚀 Instalação](#instalação) • [💡 Funcionalidades](#funcionalidades) • [🏗️ Arquitetura](#arquitetura)
 
+---
+
+**[🇧🇷 Versão em Inglês](README.en.md)**
+
 </div>
 
 ---
