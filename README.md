@@ -13,7 +13,7 @@
 
 ---
 
-**[🇧🇷 Versão em Inglês](README.en.md)**
+**[US Versão em Inglês](README.en.md)**
 
 </div>
 
